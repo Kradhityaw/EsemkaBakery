@@ -25,8 +25,6 @@ class Detail_Activity : AppCompatActivity() {
 
         var id = intent.getStringExtra("id")
 
-
-
         GlobalScope.launch(Dispatchers.IO) {
             val connDetails = URL("http://10.0.2.2:5000/api/Cake/$id").openStream().bufferedReader().readText()
             val jsonsDetail = JSONObject(connDetails)
