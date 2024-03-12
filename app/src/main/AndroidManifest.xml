@@ -15,6 +15,10 @@
         android:theme="@style/Theme.A1_KEVIND_RADHITYA_WICAKSONO"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity android:name=".Card_CartActivity" android:exported="false"/>
+        <activity
+            android:name=".Cart_Activity"
+            android:exported="false" />
         <activity
             android:name=".Detail_Activity"
             android:exported="false" />

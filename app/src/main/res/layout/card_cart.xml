@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:gravity="center_vertical"
+    android:background="@drawable/shape_card"
+    android:elevation="5dp"
+    android:layout_margin="10dp">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/cart_image"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/cart_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cake 1"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/cart_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$1.20"
+            android:textColor="@color/white"
+            android:background="@drawable/price_pills"
+            android:paddingVertical="4dp"
+            android:paddingHorizontal="12dp"
+            android:layout_marginTop="10dp"/>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/price_pills"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:id="@+id/cart_increment">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+            <EditText
+                android:inputType="number"
+                android:text="0"
+                android:textAlignment="center"
+                android:layout_marginHorizontal="5dp"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:background="@drawable/shape_input"
+                android:id="@+id/cart_qty"/>
+
+            <LinearLayout
+                android:id="@+id/cart_decrement"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/price_pills"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

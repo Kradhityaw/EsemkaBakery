@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,6 +33,8 @@ class Home_Activity : AppCompatActivity() {
         bind.homeToolbar.setNavigationOnClickListener {
             startActivity(Intent(this@Home_Activity, Search_Activity::class.java))
         }
+
+        setSupportActionBar(bind.homeToolbar)
 
         GlobalScope.launch(Dispatchers.IO) {
             val conn = URL("http://10.0.2.2:5000/api/Cake").openStream().bufferedReader().readText()
@@ -70,8 +74,21 @@ class Home_Activity : AppCompatActivity() {
                         holder.binding.cakeName.text = sample.getString("name")
 
                         holder.itemView.setOnClickListener {
-                            id = sample.getInt("cakeID")
-                            Log.d("oke", id.toString())
+//                            id = sample.getInt("cakeID")
+//                            Log.d("oke", id.toString())
+                            bind.detailName.text = sample.getString("name");
+                            bind.detailPrice.text = "$${sample.getString("price")}"
+
+                            GlobalScope.launch(Dispatchers.IO) {
+                                val conn = URL("http://10.0.2.2:5000/api/Cake/${sample.getInt("cakeID")}").openStream().bufferedReader().readText()
+                                val jsons = JSONObject(conn)
+                                val image = BitmapFactory.decodeStream(URL(jsons.getString("imageURL")).openStream())
+
+                                runOnUiThread {
+                                    bind.detailDesc.text = jsons.getString("description")
+                                    bind.detailImage.setImageBitmap(image)
+                                }
+                            }
                         }
 
                         GlobalScope.launch(Dispatchers.IO) {
@@ -86,6 +103,22 @@ class Home_Activity : AppCompatActivity() {
                 bind.homeRv.adapter = adapter
                 bind.homeRv.layoutManager = LinearLayoutManager(this@Home_Activity, LinearLayoutManager.HORIZONTAL, false)
             }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.cart -> {
+                startActivity(Intent(this@Home_Activity, Cart_Activity::class.java))
+                finish()
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
         }
     }
 

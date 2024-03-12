@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Cart_Activity"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_toolbar"
+        app:titleTextColor="@color/white"
+        app:title="Esemka Bakery"
+        app:navigationIcon="@drawable/baseline_arrow_back_ios_new_24"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cart_rv"/>
+
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:background="@drawable/cart_total"
+            android:elevation="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12 Cakes"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/cart_total_cake"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="17dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/cart_total_price"/>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="Checkout"
+                android:backgroundTint="@color/coklat"
+                android:id="@+id/btn_checkout"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
